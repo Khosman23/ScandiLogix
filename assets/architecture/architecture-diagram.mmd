@@ -1,0 +1,30 @@
+flowchart LR
+  %% ScandiLogix - High-level Architecture
+
+  subgraph Users
+    A[Admin]
+    D[Dispatcher]
+    R[Driver]
+    C[Customer]
+  end
+
+  subgraph PowerPlatform[Microsoft Power Platform]
+    PA[Power Apps\n(Canvas App)]
+    DV[(Dataverse\nTables + Security Roles)]
+    FA[Power Automate\n(Reporting & Notifications)]
+  end
+
+  subgraph M365[Microsoft 365]
+    OUT[Outlook Connector\n(Email Notifications)]
+  end
+
+  A --> PA
+  D --> PA
+  R --> PA
+  C --> PA
+
+  PA <--> DV
+  PA --> FA
+  FA --> DV
+  FA --> OUT
+
